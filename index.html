@@ -8,7 +8,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: radial-gradient(ellipse at center, #2e003e 0%, #120020 100%);
+      background: #000000;
       overflow: hidden;
       height: 100vh;
     }
@@ -28,9 +28,65 @@
       z-index: 0;
     }
 
+    .nebula {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(153,50,204,0.2), rgba(0,0,0,0));
+      filter: blur(120px);
+      animation: drift 60s infinite alternate ease-in-out;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .nebula:nth-child(2) {
+      top: 10%;
+      left: 15%;
+    }
+
+    .nebula:nth-child(3) {
+      top: 60%;
+      left: 70%;
+      background: radial-gradient(circle, rgba(0,191,255,0.2), rgba(0,0,0,0));
+    }
+
+    .cluster {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.25), rgba(255,255,255,0));
+      filter: blur(150px);
+      border-radius: 50%;
+      animation: pulse 20s infinite ease-in-out;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .cluster:nth-child(4) {
+      top: 40%;
+      left: 20%;
+    }
+
+    .cluster:nth-child(5) {
+      top: 75%;
+      left: 60%;
+      background: radial-gradient(circle, rgba(255,100,255,0.25), rgba(0,0,0,0));
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(20px, 30px) scale(1.05); }
+    }
+
     @keyframes swirl {
       0% { transform: rotate(0deg) scale(1); }
       100% { transform: rotate(360deg) scale(1); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.2; }
+      50% { transform: scale(1.1); opacity: 0.4; }
     }
 
     .stars, .shooting-stars {
@@ -98,6 +154,10 @@
 </head>
 <body>
   <div class="galaxy"></div>
+  <div class="nebula"></div>
+  <div class="nebula"></div>
+  <div class="cluster"></div>
+  <div class="cluster"></div>
   <div class="stars" id="stars"></div>
   <div class="shooting-stars" id="shooting-stars"></div>
 
